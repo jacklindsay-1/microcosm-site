@@ -17,10 +17,11 @@
 */
 
 /* Layout scale: W is the width of the word "Microcosm". Everything else is
-   sized from it, matching the 1322px mockup where W = 736px. */
+   sized from it, matching the 1304px mockup where W = 793px. The vh term
+   keeps the whole stack (about 0.9 W tall) inside short laptop windows. */
 :root {
-  --W: clamp(260px, 56vw, 736px);
-  --text: max(16px, calc(var(--W) * 0.0335));
+  --W: clamp(260px, min(60.8vw, calc(108vh - 60px)), 880px);
+  --text: max(16px, calc(var(--W) * 0.0612));
   --font: "Avenir Next", "Avenir", "Nunito Sans", system-ui, sans-serif;
 }
 
@@ -53,30 +54,30 @@ main {
 h1 { margin: 0; font-size: inherit; line-height: 0; }
 
 /* The viewBox spans the rule's left end to the circle's right edge.
-   Shift right so the "Microcosm" + rule group sits on the page center and
-   the circle hangs off to the right. */
+   Shift right so the "Microcosm" + rule group sits just left of the page
+   center, as in the mockup, and the circle hangs off to the right. */
 .logo {
   display: block;
   width: calc(var(--W) * 897 / 736);
   height: auto;
   overflow: visible;
-  transform: translateX(8.36%);
+  transform: translateX(6.68%);
 }
 .logo .orb  { fill: var(--orb); }
 .logo .ink  { fill: var(--logo); }
 
 .tagline {
-  margin: calc(var(--W) * 0.105) 0 0;
+  margin: calc(var(--W) * 0.115) 0 0;
   max-width: 34em;
   font-size: var(--text);
-  line-height: 1.45;
+  line-height: 1.22;
 }
 
 .contact {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  margin-top: calc(var(--W) * 0.075);
+  margin-top: calc(var(--W) * 0.079);
   padding: 0 8px;
   color: var(--link);
   font-size: var(--text);
