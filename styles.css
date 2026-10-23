@@ -1,0 +1,98 @@
+:root {
+  --bg:      #0B0841;  /* page background */
+  --logo:    #FFFFFF;  /* Microcosm, Bioscience, rule */
+  --orb:     #DA7842;  /* circle */
+  --tagline: #ADC9E9;
+  --link:    #6093D4;
+  --link-hover: #8DB3E6;
+}
+
+/* Alternate palette: paste over the six lines above to try it.
+  --bg:      #F6F1E7;
+  --logo:    #1B1A3A;
+  --orb:     #D9663A;
+  --tagline: #3E4C6E;
+  --link:    #2A5DB0;
+  --link-hover: #183F80;
+*/
+
+/* Layout scale: W is the width of the word "Microcosm". Everything else is
+   sized from it, matching the 1322px mockup where W = 736px. */
+:root {
+  --W: clamp(260px, 56vw, 736px);
+  --text: max(16px, calc(var(--W) * 0.0335));
+  --font: "Avenir Next", "Avenir", "Nunito Sans", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: var(--bg);
+  color: var(--tagline);
+  font-family: var(--font);
+  font-weight: 400;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h1 { margin: 0; font-size: inherit; line-height: 0; }
+
+/* The viewBox spans the rule's left end to the circle's right edge.
+   Shift right so the "Microcosm" + rule group sits on the page center and
+   the circle hangs off to the right. */
+.logo {
+  display: block;
+  width: calc(var(--W) * 897 / 736);
+  height: auto;
+  overflow: visible;
+  transform: translateX(8.36%);
+}
+.logo .orb  { fill: var(--orb); }
+.logo .ink  { fill: var(--logo); }
+
+.tagline {
+  margin: calc(var(--W) * 0.105) 0 0;
+  max-width: 34em;
+  font-size: var(--text);
+  line-height: 1.45;
+}
+
+.contact {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: calc(var(--W) * 0.075);
+  padding: 0 8px;
+  color: var(--link);
+  font-size: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+.contact:hover, .contact:focus-visible { color: var(--link-hover); }
+.contact:focus-visible { outline: 2px solid var(--link-hover); outline-offset: 2px; border-radius: 2px; }
+
+/* Keep the two-line break from the mockup on wide screens; let it wrap
+   naturally on narrow ones. */
+.tagline br { display: none; }
+@media (min-width: 700px) { .tagline br { display: inline; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  main { animation: fade-in 900ms ease-out both; }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+}
