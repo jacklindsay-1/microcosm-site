@@ -17,10 +17,10 @@
 */
 
 /* Layout scale: W is the width of the word "Microcosm". Everything else is
-   sized from it, matching the 1304px mockup where W = 793px. The vh term
-   keeps the whole stack (about 0.9 W tall) inside short laptop windows. */
+   sized from it, matching the full-screen mockup where W is 35.3% of the
+   screen width (61.7% of its height, whichever is smaller). */
 :root {
-  --W: clamp(260px, min(60.8vw, calc(108vh - 60px)), 880px);
+  --W: clamp(260px, min(35.3vw, 61.7vh), 1100px);
   --text: max(16px, calc(var(--W) * 0.0612));
   --font: "Avenir Next", "Avenir", "Nunito Sans", system-ui, sans-serif;
 }
